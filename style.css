@@ -1,0 +1,376 @@
+*,
+:before,
+:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+h2 {
+  padding: 40px 50px 0;
+  font-size: 2.5rem;
+  font-weight: 900;
+  position: relative;
+}
+
+/* trait en dessous */
+h2::after {
+  content: "";
+  background: green;
+  height: 5px;
+  width: 50px;
+  position: absolute;
+  bottom: -10px;
+  left: 50px;
+}
+
+/* rectangle en dessous de chaque image (les images ont des position relative) */
+.texteImage {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: white;
+  opacity: 0.7;
+  padding: 15px;
+  text-align: left;
+}
+
+/* nom de chaque plantes dans le rectangle */
+.name {
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+/*prix de chaque plante dans le rectangle*/
+.prix {
+  color: green;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+/* mettre de l'espace sur le coté et entre chaque section */
+.gridVentes,
+.gridPlantes {
+  padding: 50px;
+}
+
+/*-----------------------------------------------------
+HEADER
+----------------------------------------------------*/
+
+/* imaage de fond */
+header {
+  background: url(./images/bg.jpg) center / cover;
+  padding: 20px 30px;
+  color: white;
+  min-height: 90vh;
+  position: relative;
+}
+
+/*  logo */
+header img {
+  width: 150px;
+}
+
+/* menu */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.2rem;
+}
+
+/* liste contenant les liens*/
+nav ul {
+  display: flex;
+  margin: 0 20px;
+}
+
+/* espace entre chaque lien */
+nav li {
+  margin: 0 20px;
+}
+
+/*titre principal*/
+h1 {
+  font-size: 7rem;
+  max-width: 30%;
+  margin: 0 60px;
+  font-weight: 900;
+  line-height: 150px;
+  position: absolute;
+  bottom: 5vh;
+}
+
+@media screen and (max-width: 700px) {
+  /* reduire la taille du texte*/
+  nav {
+    font-size: 0.8rem;
+  }
+  /* reduire l'espace entre les liens */
+  nav li {
+    margin: 10px;
+  }
+
+  /* reduire la taille de l'image background*/
+  header {
+    min-height: 75vh;
+  }
+  /* reduire taille logo*/
+  header img {
+    width: 90px;
+  }
+  /*reduire taille titre*/
+  h1 {
+    font-size: 5rem;
+    line-height: 120px;
+    margin: 0 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /*reduire taille titre du header*/
+  h1 {
+    font-size: 3rem;
+    line-height: 80px;
+  }
+  /* reduire image arriere plan*/
+  header {
+    min-height: 55vh;
+  }
+  /*faire disparaitre le menu*/
+  nav ul {
+    display: none;
+  }
+  /* placer le logo au centre et l'agrandir */
+  header img {
+    width: 160px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+/*-----------------------------------------------------
+NOS MEILLEURS VENTES
+----------------------------------------------------*/
+
+/* grille contenant toutes les plantes*/
+.gridVentes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 650px;
+  grid-template-areas: "grid1 grid2 grid3 grid4";
+}
+
+/* image 1*/
+.grid1 {
+  background: url("./images/nos_meilleures_ventes/1.jpg") center / cover;
+  grid-area: grid1;
+  position: relative;
+}
+
+/*image 2*/
+.grid2 {
+  background: url("./images/nos_meilleures_ventes/2.jpg") center / cover;
+  grid-area: grid2;
+  position: relative;
+}
+
+/*image 3*/
+.grid3 {
+  background: url("./images/nos_meilleures_ventes/3.jpg") center / cover;
+  grid-area: grid3;
+  position: relative;
+}
+
+/*image 4*/
+.grid4 {
+  background: url("./images/nos_meilleures_ventes/4.jpg") center / cover;
+  grid-area: grid4;
+  position: relative;
+}
+
+@media screen and (max-width: 2000px) and (min-width: 1350px) {
+  /* disposition en 1 ligne avec 4 colonnes */
+  .gridVentes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 700px;
+    grid-template-areas: "grid1 grid2 grid3 grid4";
+  }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 600px) {
+  /*modifier disposition grille (2 * 2) */
+  .gridVentes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 500px 500px;
+    grid-template-areas: "grid1 grid2" "grid3 grid4";
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) and (min-width: 540px) {
+  /* grille 2*2 avec hauteur image modifier */
+  .gridVentes {
+    grid-template-rows: 400px 400px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "grid1 grid2" "grid3 grid4";
+  }
+}
+
+@media screen and (max-width: 540px) {
+  /* passer les images les une en dessous des autres */
+  .gridVentes {
+    display: grid;
+    padding: 30px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 450px);
+    grid-template-areas: "grid1" "grid2" "grid3" "grid4";
+  }
+  /* reduire la taille du titre de section */
+  h2 {
+    font-size: 1.5rem;
+    padding: 30px 30px 0;
+  }
+  /* replacer le trait en dessous*/
+  h2::after {
+    left: 30px;
+  }
+}
+
+/*-----------------------------------------------------
+NOS PLANTES
+----------------------------------------------------*/
+
+/* grille contenant les 3 images du dessus*/
+.gridTop {
+  display: grid;
+  grid-template-rows: 350px 350px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "g1 g2" "g1 g3";
+}
+
+/* grille contenant les 3 images du dessous */
+.gridBottom {
+  display: grid;
+  grid-template-rows: 700px;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-areas: "g4 g5 g6";
+}
+
+/* image 1 grille top*/
+.g1 {
+  background: url("images/nos_plantes/1.jpg") center / cover;
+  grid-area: g1;
+  position: relative;
+}
+
+/* image 2 grille top*/
+.g2 {
+  background: url("images/nos_plantes/2.jpg") center / cover;
+  grid-area: g2;
+  position: relative;
+}
+
+/* image 3 grille top */
+.g3 {
+  background: url("images/nos_plantes/3.jpg") center / cover;
+  grid-area: g3;
+  position: relative;
+}
+
+/* image 4 grille bottom*/
+.g4 {
+  background: url("images/nos_plantes/4.jpg") center / cover;
+  grid-area: g4;
+  position: relative;
+}
+
+/* image 5 grille bottom*/
+.g5 {
+  background: url("images/nos_plantes/5.jpeg") center / cover;
+  grid-area: g5;
+  position: relative;
+}
+
+/* image 6 grille bottom*/
+.g6 {
+  background: url("images/nos_plantes/6.jpg") center / cover;
+  grid-area: g6;
+  position: relative;
+}
+
+/* grand ecran */
+@media screen and (max-width: 2000px) and (min-width: 1300px) {
+  /* augmenter la taille des lignes */
+  .gridTop {
+    grid-template-rows: 550px 550px;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-width: 550px) {
+  /* changer la disposition de la grille du haut */
+  .gridTop {
+    grid-template-areas: "g1 g2" "g3 g3";
+    grid-template-rows: 550px 450px;
+  }
+  /* changer disposition grille du bas */
+  .gridBottom {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "g4 g5" "g6 g6";
+    grid-template-rows: 500px 400px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  /* reduire le padding */
+  .gridPlantes {
+    padding: 30px;
+  }
+
+  /* passer en display block*/
+  .gridTop {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 450px);
+    grid-template-areas: "g1" "g2" "g3";
+  }
+  .gridBottom {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 450px);
+    grid-template-areas: "g4" "g5" "g6";
+  }
+}
+/*-----------------------------------------------------
+FOOTER
+----------------------------------------------------*/
+/*copyrigth*/
+footer {
+  background: black;
+  opacity: 0.8;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
+
+/*logo*/
+footer img {
+  width: 150px;
+}
